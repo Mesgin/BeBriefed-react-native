@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import StatusScreen from './StatusScreen'
 
 export default class MainContainer extends Component {
