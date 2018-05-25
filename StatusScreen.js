@@ -6,6 +6,7 @@ export default class StatusScreen extends Component {
   render() {
     return (
       <View style={styles.container} >
+      <StatusIndicator isUp={this.props.isUp}/>
         <Text style={styles.statusText}>
           Service is {this.props.isUp? 'Up' : 'Down'}
         </Text>
