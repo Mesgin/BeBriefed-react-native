@@ -6,7 +6,7 @@ export default class MainContainer extends Component {
   render() {
     return (
       <View style={styles.container} >
-        <StatusScreen />
+        <StatusScreen isUp={this.props.isUp}/>
       </View>
     )
   }
