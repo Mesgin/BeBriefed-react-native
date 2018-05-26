@@ -5,17 +5,32 @@ import { Root } from './config/router'
 const isUp = true
 
 export default class App extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props)
 
     state = {
-      isUp: true,
-      lastUpTime: new Date((new Date()).getTime() - 5*60*1000)
+      selectedService: 'web',
+      services: [
+        { key: 'web', isUp: true, lastUpTime: null },
+        { key: 'db', isUp: false, lastUpTime: new Date((new Date()).getTime() - 5 * 60 * 1000) },
+        { key: 'mail', isUp: true, lastUpTime: null },
+      ]
     }
+
+    this._switchService = this._switchService.bind(this)
   }
+
+  _switchService(nextService) {
+    this.setState({ selectedService: nextService })
+  }
+
   render() {
     return (
-      <Root isUp={this.state.isUp} lastUpTime={this.state.lastUpTime} />
+      <Root
+        selectedService={this.state.selectedService}
+        services={this.state.services}
+        onServiceChange={this._switchService}
+      />
     )
   }
 }
